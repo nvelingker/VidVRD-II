@@ -131,10 +131,10 @@ def convert_format(anno, pred_relations, pred_version):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Evaluate a set of tasks related to video relation understanding.')
-    parser.add_argument('dataset', type=str, help='the dataset name for evaluation')
-    parser.add_argument('split', type=str, help='the split name for evaluation')
-    parser.add_argument('task', choices=['object', 'action', 'relation'], help='which task to evaluate')
-    parser.add_argument('prediction', type=str, help='Corresponding prediction JSON file')
+    parser.add_argument('--dataset', type=str, help='the dataset name for evaluation')
+    parser.add_argument('--split', type=str, help='the split name for evaluation')
+    parser.add_argument('--task', choices=['object', 'action', 'relation'], help='which task to evaluate')
+    parser.add_argument('--prediction', type=str, help='Corresponding prediction JSON file')
     parser.add_argument('--visualize', action="store_true", default=False, help='Visualize for qualitative evaluation')
     args = parser.parse_args()
 

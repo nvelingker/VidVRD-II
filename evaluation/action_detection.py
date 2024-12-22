@@ -1,6 +1,6 @@
 import numpy as np
 
-from .common import voc_ap, viou
+from  .common import voc_ap, viou
 
 
 def compute_detection_scores_per_class(gt_actions, pred_actions, viou_threshold):
