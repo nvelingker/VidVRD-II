@@ -89,6 +89,7 @@ class Dataset(object):
         return self.soid2so[cid]
 
     def get_object_id(self, name):
+        name = name.replace(" ", "_")
         return self.so2soid[name]
 
     def get_predicate_num(self):
@@ -98,6 +99,7 @@ class Dataset(object):
         return self.pid2pred[pid]
 
     def get_predicate_id(self, name):
+        name = name.replace(" ", "_")
         return self.pred2pid[name]
 
     def get_triplets(self, split):

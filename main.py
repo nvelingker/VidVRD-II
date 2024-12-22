@@ -34,11 +34,10 @@ def get_model_param(cfg_path, exp_id, no_cache=False):
     random.seed(param['rng_seed'])
     torch.cuda.manual_seed_all(param['rng_seed'])
 
-    if param['model']['name'] in ['independent_classifier', 'cascade_classifier', 'iterative_classifier']:
-        from baseline import predictor
-        from baseline import learner
-    else:
-        raise ValueError(param['model']['name'])
+
+    from baseline import predictor
+    from baseline import learner
+
 
     print(json.dumps(param, indent=4))
     return param, predictor, learner

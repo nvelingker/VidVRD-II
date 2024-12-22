@@ -33,10 +33,10 @@ class VidVRD(Dataset):
         if imagenet_struture:
             if 'train' in vid:
                 path = glob.glob(os.path.join(self.video_rpath,
-                        'Data/VID/snippets/train/*/{}.mp4'.format(vid)))[0]
+                        '{}.mp4'.format(vid)))[0]
             elif 'val' in vid:
                 path = os.path.join(self.video_rpath,
-                        'Data/VID/snippets/val/{}.mp4'.format(vid))
+                        '{}.mp4'.format(vid))
             else:
                 raise Exception('Unknown video ID {}'.format(vid))
         else:
