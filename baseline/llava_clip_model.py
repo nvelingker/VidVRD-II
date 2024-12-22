@@ -380,8 +380,15 @@ class PredicateModel(nn.Module):
 
                 logit_scale = self.clip_model.logit_scale
                 binary_logits_per_text = torch.matmul(binary_nl_features, obj_clip_features.t()) * logit_scale.exp()
-                # binary_logits_per_image = binary_logits_per_text.t()
-                binary_logits_per_text = binary_logits_per_text.softmax(dim=0)
+                # Compute row-wise min and max
+                row_min = binary_logits_per_text.min(dim=1, keepdim=True)[0]  # Shape: (batch_size, 1)
+                row_max = binary_logits_per_text.max(dim=1, keepdim=True)[0]  # Shape: (batch_size, 1)
+
+                # Compute the range (max - min)
+                row_range = row_max - row_min  # Shape: (batch_size, 1)
+
+                # Perform min-max normalization
+                binary_logits_per_text = (binary_logits_per_text - row_min) / row_range
 
                 binary_prob_per_obj = {}
                 for binary_name, probs in zip(binary_kws, binary_logits_per_text):

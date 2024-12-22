@@ -57,6 +57,7 @@ class Dataset(object):
 
         # build index for subject/object and predicate
         so = sorted(so)
+        so.append('background')
         pred = sorted(pred)
         self.soid2so = dict()
         self.so2soid = dict()

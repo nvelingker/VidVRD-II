@@ -165,14 +165,16 @@ class TestDataset(Dataset):
                     obj_to_frames[obj_id].add(frame_rel)
 
         # 4. Object names
-        
-        batched_names = [['turtle', 'antelope', 'bicycle', 'lion', 'ball', 'motorcycle', 'cattle', 'airplane', 'red panda', 'horse', 'watercraft', 'monkey', 'fox', 'elephant', 'bird', 'sheep', 'frisbee', 'giant panda', 'squirrel', 'bus', 'bear', 'tiger', 'train', 'snake', 'rabbit', 'whale', 'sofa', 'skateboard', 'dog', 'domestic cat', 'person', 'lizard', 'hamster', 'car', 'zebra']]
+        bns = list(self.raw_dataset.so2soid.keys())
+        batched_names = [[b.replace("_", " ") for b in bns]]
 
         # 5. Unary keywords
         batched_unary_kws = [[]]
 
         # 6. Binary keywords
-        batched_binary_kws = [['taller', 'swim behind', 'walk away', 'fly behind', 'creep behind', 'lie with', 'move left', 'stand next to', 'touch', 'follow', 'move away', 'lie next to', 'walk with', 'move next to', 'creep above', 'stand above', 'fall off', 'run with', 'swim front', 'walk next to', 'kick', 'stand left', 'creep right', 'sit above', 'watch', 'swim with', 'fly away', 'creep beneath', 'front', 'run past', 'jump right', 'fly toward', 'stop beneath', 'stand inside', 'creep left', 'run next to', 'beneath', 'stop left', 'right', 'jump front', 'jump beneath', 'past', 'jump toward', 'sit front', 'sit inside', 'walk beneath', 'run away', 'stop right', 'run above', 'walk right', 'away', 'move right', 'fly right', 'behind', 'sit right', 'above', 'run front', 'run toward', 'jump past', 'stand with', 'sit left', 'jump above', 'move with', 'swim beneath', 'stand behind', 'larger', 'walk past', 'stop front', 'run right', 'creep away', 'move toward', 'feed', 'run left', 'lie beneath', 'fly front', 'walk behind', 'stand beneath', 'fly above', 'bite', 'fly next to', 'stop next to', 'fight', 'walk above', 'jump behind', 'fly with', 'sit beneath', 'sit next to', 'jump next to', 'run behind', 'move behind', 'swim right', 'swim next to', 'hold', 'move past', 'pull', 'stand front', 'walk left', 'lie above', 'ride', 'next to', 'move beneath', 'lie behind', 'toward', 'jump left', 'stop above', 'creep toward', 'lie left', 'fly left', 'stop with', 'walk toward', 'stand right', 'chase', 'creep next to', 'fly past', 'move front', 'run beneath', 'creep front', 'creep past', 'play', 'lie inside', 'stop behind', 'move above', 'sit behind', 'faster', 'lie right', 'walk front', 'drive', 'swim left', 'jump away', 'jump with', 'lie front', 'left']]
+        bkws = list(self.raw_dataset.pred2pid.keys())
+
+        batched_binary_kws = [[b.replace("_", " ") for b in bkws]]
 
         # 7. Object pairs
         batched_obj_pairs = []
