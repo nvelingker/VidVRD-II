@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import torch
-
+import time
 def increase_brightness(img, alpha=0.2):
     height, width, _ = img.shape
     white_img = np.zeros([height,width,3],dtype=np.uint8)
@@ -38,7 +38,7 @@ def extract_single_object(img, mask, alpha=0.8):
     # Blend the original image with the masked white image
     output_img = cv2.addWeighted(img, 1-alpha, masked_white_img, alpha, 0)
     
-    # output_path = "/home/nvelingker/LASER/VidVRD-II/debug/test.png"  # or test.jpg, etc.
+    # output_path = f"/home/nvelingker/LASER/VidVRD-II/imagenet-vidvrd-dataset/debug/vis/extract/{int(time.time())}.png"  # or test.jpg, etc.
 
     # # 'output_img' is the image you want to save
     # cv2.imwrite(output_path, output_img)
@@ -114,10 +114,10 @@ def crop_image_contain_bboxes(img, bbox_ls, data_id):
     # 7. Finally, crop and return
     ret =  img[union_y1:union_y2, union_x1:union_x2]
     
-    output_path = "/home/nvelingker/LASER/VidVRD-II/debug/test2.png"  # or test.jpg, etc.
+    # output_path = f"/home/nvelingker/LASER/VidVRD-II/imagenet-vidvrd-dataset/debug/vis/crop/{int(time.time())}.png"  # or test.jpg, etc.
 
-    # 'output_img' is the image you want to save
-    cv2.imwrite(output_path, ret)
+    # # 'output_img' is the image you want to save
+    # cv2.imwrite(output_path, ret)
     
     return ret
 

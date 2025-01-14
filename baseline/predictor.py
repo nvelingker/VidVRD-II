@@ -313,7 +313,7 @@ def predict(raw_dataset, split, use_cuda=False, output_json=True, **param):
         model_dir = os.path.join(param['model'].get('dir'))
 
         device = param['model'].get('device', 'error')
-        test_num_top_pairs = param['model'].get('num_top_pairs', 30)
+        test_num_top_pairs = param['model'].get('inference_topk', 100)
         clip_model_name = param['model'].get('clip_model_name', "openai/clip-vit-base-patch32")
 
         # Check if model directory exists and contains checkpoint
